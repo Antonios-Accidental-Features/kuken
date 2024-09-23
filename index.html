@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React Component</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script src="main.js"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swedish Joke Button</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <button id="jokeButton" class="btn">Visa kuken-skämt</button>
+        <div id="jokeContainer" class="hidden">
+            <p id="question" class="question"></p>
+            <button id="answerButton" class="btn btn-secondary hidden">Visa svaret</button>
+            <div id="answerContainer" class="hidden">
+                <p id="answer"></p>
+                <img id="jokeImage" alt="Joke illustration" class="joke-image">
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
 </html>
