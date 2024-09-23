@@ -35,6 +35,7 @@ const jokes = [
 
 let currentJoke;
 let isJokeVisible = false;
+let isFirstJoke = true;
 
 function getRandomJoke() {
     return jokes[Math.floor(Math.random() * jokes.length)];
@@ -53,6 +54,10 @@ jokeButton.addEventListener('click', () => {
         answerButton.classList.remove('hidden');
         jokeButton.textContent = 'Dölj skämt';
         isJokeVisible = true;
+        
+        if (isFirstJoke) {
+            isFirstJoke = false;
+        }
     }
 });
 
@@ -61,4 +66,9 @@ answerButton.addEventListener('click', () => {
     answer.textContent = currentJoke.answer;
     jokeImage.src = 'https://ggscore.com/media/logo/t62288.png?75';
     answerButton.classList.add('hidden');
+});
+
+// Set the initial button text when the page loads
+window.addEventListener('load', () => {
+    jokeButton.textContent = isFirstJoke ? 'Visa kuken-skämt' : 'Visa nytt kuken-skämt';
 });
