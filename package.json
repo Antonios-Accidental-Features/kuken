@@ -1,29 +1,25 @@
 {
-  "name": "kuken-1",
+  "name": "kuken",
   "version": "1.0.0",
-  "main": "index.html",
-  {
-    "scripts": {
-      "build": "webpack",
-      "predeploy": "npm run build",
-      "deploy": "gh-pages -d dist"
-    }  
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "description": "",
+  "main": "index.html",
+  "homepage": "https://antonios-accidental-features.github.io/kuken",
+  "scripts": {
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "@babel/preset-env": "^7.25.4",
-    "@babel/preset-react": "^7.24.7",
-    "babel-loader": "^9.2.1",
-    "gh-pages": "^6.1.1",
-    "webpack": "^5.94.0",
-    "webpack-cli": "^5.1.4"
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0",
+    "babel-loader": "^8.2.2",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "gh-pages": "^4.0.0"
   }
 }
