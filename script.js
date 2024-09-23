@@ -1,4 +1,3 @@
-const layoutSelector = document.getElementById('layoutSelector');
 const jokeContainer = document.getElementById('jokeContainer');
 const toggleButton = document.getElementById('toggleButton');
 const jokeButton = document.getElementById('jokeButton');
