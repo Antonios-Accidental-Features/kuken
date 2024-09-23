@@ -8,7 +8,7 @@ const answer = document.getElementById('answer');
 const explanation = document.getElementById('explanation');
 const jokeImage = document.getElementById('jokeImage');
 const hideJokeButton = document.getElementById('hideJokeButton');
-const showExplanationButton = document.getElementById('showExplanationButton'); // New Button
+const showExplanationButton = document.getElementById('showExplanationButton');
 
 
 const kukenJokes = [
@@ -43,7 +43,6 @@ const dinMammaJokes = [
     { question: "Din mamma är så glömsk att...", answer: "Hon glömde att hon hade alzheimers!", explanation: "Skämt om extrem glömska, där man glömmer sin egen sjukdom." }
 ];
 
-
 let currentJokes = kukenJokes;
 let currentJoke;
 let isJokeVisible = false;
@@ -67,6 +66,8 @@ function updateButtonText() {
 function hideJoke() {
     jokeContainer.classList.add('hidden');
     answerContainer.classList.add('hidden');
+    explanation.classList.add('hidden'); // Ensure explanation is hidden
+    showExplanationButton.classList.add('hidden'); // Hide explanation button
     isJokeVisible = false;
     updateButtonText();
 }
@@ -81,6 +82,7 @@ jokeButton.addEventListener('click', () => {
         answerButton.classList.remove('hidden');
         answerContainer.classList.add('hidden');
         explanation.classList.add('hidden'); // Hide explanation initially
+        showExplanationButton.classList.add('hidden'); // Hide explanation button initially
         isJokeVisible = true;
         
         if (isFirstJoke) {
@@ -93,8 +95,8 @@ jokeButton.addEventListener('click', () => {
 answerButton.addEventListener('click', () => {
     answerContainer.classList.remove('hidden');
     answer.textContent = currentJoke.answer;
+    explanation.classList.add('hidden'); // Ensure explanation is hidden initially
     showExplanationButton.classList.remove('hidden'); // Show explanation button
-    explanation.textContent = currentJoke.explanation;
     jokeImage.src = 'https://ggscore.com/media/logo/t62288.png?75';
     answerButton.classList.add('hidden');
 });
