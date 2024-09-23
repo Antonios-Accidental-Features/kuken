@@ -1,10 +1,12 @@
+const layoutSelector = document.getElementById('layoutSelector');
+const jokeContainer = document.getElementById('jokeContainer');
 const toggleButton = document.getElementById('toggleButton');
 const jokeButton = document.getElementById('jokeButton');
-const jokeContainer = document.getElementById('jokeContainer');
 const question = document.getElementById('question');
 const answerButton = document.getElementById('answerButton');
 const answerContainer = document.getElementById('answerContainer');
 const answer = document.getElementById('answer');
+const explanation = document.getElementById('explanation');
 const jokeImage = document.getElementById('jokeImage');
 const hideJokeButton = document.getElementById('hideJokeButton');
 
@@ -39,6 +41,20 @@ const dinMammaJokes = [
     { question: "Din mamma är så stark att...", answer: "Hon kan lyfta ett svart hål!", explanation: "Skämt om extrem styrka, att kunna lyfta något omöjligt." },
     { question: "Din mamma är så glömsk att...", answer: "Hon glömde att hon hade alzheimers!", explanation: "Skämt om extrem glömska, där man glömmer sin egen sjukdom." }
 ];
+
+const layoutSelector = document.getElementById('layoutSelector');
+const jokeContainer = document.getElementById('jokeContainer');
+const toggleButton = document.getElementById('toggleButton');
+const jokeButton = document.getElementById('jokeButton');
+const question = document.getElementById('question');
+const answerButton = document.getElementById('answerButton');
+const answerContainer = document.getElementById('answerContainer');
+const answer = document.getElementById('answer');
+const explanation = document.getElementById('explanation');
+const jokeImage = document.getElementById('jokeImage');
+const hideJokeButton = document.getElementById('hideJokeButton');
+
+// Your existing joke arrays (kukenJokes and dinMammaJokes) here
 
 let currentJokes = kukenJokes;
 let currentJoke;
@@ -87,7 +103,8 @@ jokeButton.addEventListener('click', () => {
 
 answerButton.addEventListener('click', () => {
     answerContainer.classList.remove('hidden');
-    answer.textContent = currentJoke.answer + " (" + currentJoke.explanation + ")";
+    answer.textContent = currentJoke.answer;
+    explanation.textContent = currentJoke.explanation;
     jokeImage.src = 'https://ggscore.com/media/logo/t62288.png?75';
     answerButton.classList.add('hidden');
 });
@@ -102,6 +119,125 @@ toggleButton.addEventListener('click', () => {
     toggleButton.textContent = isKukenJoke ? 'Byt till Din Mamma-skämt' : 'Byt till Kuken-skämt';
     updateButtonText();
 });
+
+layoutSelector.addEventListener('change', (event) => {
+    const selectedLayout = event.target.value;
+    
+    // Remove all layout classes
+    jokeContainer.className = 'container';
+    
+    // Add the selected layout class
+    jokeContainer.classList.add(selectedLayout);
+    
+    // Reorganize elements for specific layouts
+    reorganizeElements(selectedLayout);
+});
+
+function reorganizeElements(layout) {
+    switch(layout) {
+        case 'default':
+        case 'vertical':
+            // Reset to original structure
+            jokeContainer.innerHTML = `
+                <button id="toggleButton" class="btn btn-toggle">Byt till Din Mamma-skämt</button>
+                <button id="jokeButton" class="btn">Visa kuken-skämt</button>
+                <div id="jokeContainer" class="hidden">
+                    <p id="question" class="question"></p>
+                    <button id="answerButton" class="btn btn-secondary">Visa svaret</button>
+                    <div id="answerContainer" class="hidden">
+                        <p id="answer" class="answer"></p>
+                        <p id="explanation" class="explanation"></p>
+                        <img id="jokeImage" alt="Joke illustration" class="joke-image">
+                        <button id="hideJokeButton" class="btn btn-hide">Dölj skämt</button>
+                    </div>
+                </div>
+            `;
+            break;
+        case 'twoColumn':
+            jokeContainer.innerHTML = `
+                <div class="left-column">
+                    <button id="toggleButton" class="btn btn-toggle">Byt till Din Mamma-skämt</button>
+                    <button id="jokeButton" class="btn">Visa kuken-skämt</button>
+                </div>
+                <div class="right-column">
+                    <div id="jokeContainer" class="hidden">
+                        <p id="question" class="question"></p>
+                        <button id="answerButton" class="btn btn-secondary">Visa svaret</button>
+                        <div id="answerContainer" class="hidden">
+                            <p id="answer" class="answer"></p>
+                            <p id="explanation" class="explanation"></p>
+                            <img id="jokeImage" alt="Joke illustration" class="joke-image">
+                            <button id="hideJokeButton" class="btn btn-hide">Dölj skämt</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            break;
+        case 'card':
+            // Similar to default, but with some restructuring
+            jokeContainer.innerHTML = `
+                <button id="toggleButton" class="btn btn-toggle">Byt till Din Mamma-skämt</button>
+                <button id="jokeButton" class="btn">Visa kuken-skämt</button>
+                <div id="jokeContainer" class="hidden">
+                    <p id="question" class="question"></p>
+                    <button id="answerButton" class="btn btn-secondary">Visa svaret</button>
+                    <div id="answerContainer" class="hidden">
+                        <p id="answer" class="answer"></p>
+                        <p id="explanation" class="explanation"></p>
+                        <img id="jokeImage" alt="Joke illustration" class="joke-image">
+                    </div>
+                </div>
+                <button id="hideJokeButton" class="btn btn-hide">Dölj skämt</button>
+            `;
+            break;
+    }
+    
+    // Reattach event listeners to new elements
+    attachEventListeners();
+}
+
+function attachEventListeners() {
+    // Reattach event listeners to potentially new elements
+    document.getElementById('toggleButton').addEventListener('click', toggleJokeType);
+    document.getElementById('jokeButton').addEventListener('click', showJoke);
+    document.getElementById('answerButton').addEventListener('click', showAnswer);
+    document.getElementById('hideJokeButton').addEventListener('click', hideJoke);
+}
+
+function toggleJokeType() {
+    isKukenJoke = !isKukenJoke;
+    currentJokes = isKukenJoke ? kukenJokes : dinMammaJokes;
+    isFirstJoke = true;
+    hideJoke();
+    document.getElementById('toggleButton').textContent = isKukenJoke ? 'Byt till Din Mamma-skämt' : 'Byt till Kuken-skämt';
+    updateButtonText();
+}
+
+function showJoke() {
+    if (isJokeVisible) {
+        hideJoke();
+    } else {
+        currentJoke = getRandomJoke();
+        document.getElementById('jokeContainer').classList.remove('hidden');
+        document.getElementById('question').textContent = currentJoke.question;
+        document.getElementById('answerButton').classList.remove('hidden');
+        document.getElementById('answerContainer').classList.add('hidden');
+        isJokeVisible = true;
+        
+        if (isFirstJoke) {
+            isFirstJoke = false;
+        }
+    }
+    updateButtonText();
+}
+
+function showAnswer() {
+    document.getElementById('answerContainer').classList.remove('hidden');
+    document.getElementById('answer').textContent = currentJoke.answer;
+    document.getElementById('explanation').textContent = currentJoke.explanation;
+    document.getElementById('jokeImage').src = 'https://ggscore.com/media/logo/t62288.png?75';
+    document.getElementById('answerButton').classList.add('hidden');
+}
 
 // Set the initial button text when the page loads
 window.addEventListener('load', updateButtonText);
