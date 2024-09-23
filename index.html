@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swedish Joke Button</title>
+    <title>Swedish Joke Generator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>Svenska Skämtgeneratorn</h1>
+    </header>
+    
     <div class="container">
-        <button id="toggleButton" class="btn btn-toggle">Byt till Din Mamma-skämt</button>
-        <button id="jokeButton" class="btn">Visa kuken-skämt</button>
-        <div id="jokeContainer" class="hidden">
+        <div class="button-group">
+            <button id="toggleButton" class="btn btn-toggle">Byt till Din Mamma-skämt</button>
+            <button id="jokeButton" class="btn">Visa skämt</button>
+        </div>
+        <div id="jokeContainer" class="card hidden">
             <p id="question" class="question"></p>
             <button id="answerButton" class="btn btn-secondary">Visa svaret</button>
             <div id="answerContainer" class="hidden">
@@ -18,7 +24,13 @@
                 <img id="jokeImage" alt="Joke illustration" class="joke-image">
             </div>
         </div>
+        <button id="hideJokeButton" class="btn hidden">Dölj skämt</button>
     </div>
+
+    <footer>
+        <p>&copy; 2024 Skämtgenerator. Alla rättigheter förbehållna.</p>
+    </footer>
+    
     <script src="script.js"></script>
 </body>
 </html>
