@@ -7,32 +7,24 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <select id="layoutSelector" class="layout-selector">
-        <option value="default">Default Layout</option>
-        <option value="vertical">Vertical Stack</option>
-        <option value="twoColumn">Two-Column</option>
-        <option value="card">Card-Based</option>
-        <option value="tabbed">Tabbed Interface</option>
-        <option value="circular">Circular Layout</option>
-        <option value="minimalist">Minimalist</option>
-        <option value="comicStrip">Comic Strip</option>
-        <option value="floatingBubble">Floating Bubble</option>
-    </select>
-    
-    <div class="container" id=jokeContainer>
+    <div class="container">
         <button id="toggleButton" class="btn btn-toggle">Byt till Din Mamma-skämt</button>
         <button id="jokeButton" class="btn">Visa kuken-skämt</button>
+        
         <div id="jokeContainer" class="hidden">
             <p id="question" class="question"></p>
             <button id="answerButton" class="btn btn-secondary">Visa svaret</button>
+            
             <div id="answerContainer" class="hidden">
                 <p id="answer" class="answer"></p>
-                <p id="explanation" class="explanation"></p>
                 <img id="jokeImage" alt="Joke illustration" class="joke-image">
-                <button id="hideJokeButton" class="btn btn-hide">Dölj skämt</button>
             </div>
         </div>
+        
+        <!-- New hide button -->
+        <button id="hideJokeButton" class="btn hidden">Dölj skämt</button>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
