@@ -41,7 +41,6 @@ const dinMammaJokes = [
     { question: "Din mamma är så glömsk att...", answer: "Hon glömde att hon hade alzheimers!", explanation: "Skämt om extrem glömska, där man glömmer sin egen sjukdom." }
 ];
 
-const layoutSelector = document.getElementById('layoutSelector');
 const jokeContainer = document.getElementById('jokeContainer');
 const toggleButton = document.getElementById('toggleButton');
 const jokeButton = document.getElementById('jokeButton');
