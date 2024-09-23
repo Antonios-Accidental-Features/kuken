@@ -46,6 +46,15 @@ body {
     background-color: #018786;
 }
 
+.btn-toggle {
+    background-color: #cf6679;
+    margin-bottom: 20px;
+}
+
+.btn-toggle:hover {
+    background-color: #b54a5a;
+}
+
 .hidden {
     display: none;
 }
