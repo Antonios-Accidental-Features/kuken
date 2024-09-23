@@ -41,18 +41,6 @@ const dinMammaJokes = [
     { question: "Din mamma är så glömsk att...", answer: "Hon glömde att hon hade alzheimers!", explanation: "Skämt om extrem glömska, där man glömmer sin egen sjukdom." }
 ];
 
-const jokeContainer = document.getElementById('jokeContainer');
-const toggleButton = document.getElementById('toggleButton');
-const jokeButton = document.getElementById('jokeButton');
-const question = document.getElementById('question');
-const answerButton = document.getElementById('answerButton');
-const answerContainer = document.getElementById('answerContainer');
-const answer = document.getElementById('answer');
-const explanation = document.getElementById('explanation');
-const jokeImage = document.getElementById('jokeImage');
-const hideJokeButton = document.getElementById('hideJokeButton');
-
-// Your existing joke arrays (kukenJokes and dinMammaJokes) here
 
 let currentJokes = kukenJokes;
 let currentJoke;
