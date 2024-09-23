@@ -1,6 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -9,14 +10,35 @@ body {
     color: #e0e0e0;
 }
 
+header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #bb86fc;
+}
+
 .container {
     text-align: center;
     background-color: #1e1e1e;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    max-width: 1200px;
     width: 90%;
+}
+
+.button-group {
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .btn {
@@ -28,7 +50,7 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
-    margin: 10px 2px;
+    margin: 10px;
     cursor: pointer;
     border-radius: 8px;
     transition: background-color 0.3s ease;
@@ -48,7 +70,6 @@ body {
 
 .btn-toggle {
     background-color: #cf6679;
-    margin-bottom: 20px;
 }
 
 .btn-toggle:hover {
@@ -75,4 +96,11 @@ body {
     height: auto;
     margin-top: 20px;
     border-radius: 8px;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #999;
 }
