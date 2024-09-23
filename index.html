@@ -3,34 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swedish Joke Generator</title>
+    <title>Swedish Joke Button</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Svenska Skämtgeneratorn</h1>
-    </header>
+    <select id="layoutSelector" class="layout-selector">
+        <option value="default">Default Layout</option>
+        <option value="vertical">Vertical Stack</option>
+        <option value="twoColumn">Two-Column</option>
+        <option value="card">Card-Based</option>
+        <option value="tabbed">Tabbed Interface</option>
+        <option value="circular">Circular Layout</option>
+        <option value="minimalist">Minimalist</option>
+        <option value="comicStrip">Comic Strip</option>
+        <option value="floatingBubble">Floating Bubble</option>
+    </select>
     
-    <div class="container">
-        <div class="button-group">
-            <button id="toggleButton" class="btn btn-toggle">Byt till Din Mamma-skämt</button>
-            <button id="jokeButton" class="btn">Visa skämt</button>
-        </div>
-        <div id="jokeContainer" class="card hidden">
+    <div class="container" id=jokeContainer>
+        <button id="toggleButton" class="btn btn-toggle">Byt till Din Mamma-skämt</button>
+        <button id="jokeButton" class="btn">Visa kuken-skämt</button>
+        <div id="jokeContainer" class="hidden">
             <p id="question" class="question"></p>
             <button id="answerButton" class="btn btn-secondary">Visa svaret</button>
             <div id="answerContainer" class="hidden">
                 <p id="answer" class="answer"></p>
+                <p id="explanation" class="explanation"></p>
                 <img id="jokeImage" alt="Joke illustration" class="joke-image">
+                <button id="hideJokeButton" class="btn btn-hide">Dölj skämt</button>
             </div>
         </div>
-        <button id="hideJokeButton" class="btn hidden">Dölj skämt</button>
     </div>
-
-    <footer>
-        <p>&copy; 2024 Skämtgenerator. Alla rättigheter förbehållna.</p>
-    </footer>
-    
     <script src="script.js"></script>
 </body>
 </html>
