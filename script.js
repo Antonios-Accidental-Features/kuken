@@ -8,6 +8,8 @@ const answer = document.getElementById('answer');
 const explanation = document.getElementById('explanation');
 const jokeImage = document.getElementById('jokeImage');
 const hideJokeButton = document.getElementById('hideJokeButton');
+const showExplanationButton = document.getElementById('showExplanationButton'); // New Button
+
 
 const kukenJokes = [
     { question: "Varför gick kuken över vägen?", answer: "För att komma till andra sidan!", explanation: "Ordlek med 'gå över vägen' som en hönsgrej och 'kuken' här relaterar till en tupp." },
@@ -78,6 +80,7 @@ jokeButton.addEventListener('click', () => {
         question.textContent = currentJoke.question;
         answerButton.classList.remove('hidden');
         answerContainer.classList.add('hidden');
+        explanation.classList.add('hidden'); // Hide explanation initially
         isJokeVisible = true;
         
         if (isFirstJoke) {
@@ -90,9 +93,14 @@ jokeButton.addEventListener('click', () => {
 answerButton.addEventListener('click', () => {
     answerContainer.classList.remove('hidden');
     answer.textContent = currentJoke.answer;
+    showExplanationButton.classList.remove('hidden'); // Show explanation button
     explanation.textContent = currentJoke.explanation;
     jokeImage.src = 'https://ggscore.com/media/logo/t62288.png?75';
     answerButton.classList.add('hidden');
+});
+
+showExplanationButton.addEventListener('click', () => {
+    explanation.classList.toggle('hidden'); // Toggle explanation visibility
 });
 
 hideJokeButton.addEventListener('click', hideJoke);
